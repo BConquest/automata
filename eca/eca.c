@@ -17,8 +17,8 @@ int *generateRule(int *array, int rule) {
 }
 
 void printArray(int* array, int size) {
-	char *buffer = malloc(sizeof(char)*(size+1));
-	char character;
+	char *buffer = calloc(sizeof(char),(size+1)*2);
+	char character = ' ';
 	for (int i = 0; i < size; i++) {
 		if (array[i] == 1) {
 			character = '#';
@@ -68,7 +68,7 @@ int *updateArray(int *array, int *rule, int size) {
 
 int main(int argc, char *argv[])
 {
-	if (argc != 3) {
+	if (argc != 4) {
 		printf("Usage: ./a.out <size> <iterations> <rule: 0-255>\n");
 		exit(EXIT_FAILURE);
 	}
@@ -96,6 +96,7 @@ int main(int argc, char *argv[])
 	
 	arr[size/2+1] = 1;
 
+	printArray(arr, size);
 	for (int i = 0; i < atoi(argv[2]); i++) {
 		printArray(arr, size);
 		arr = updateArray(arr, rule, size);
