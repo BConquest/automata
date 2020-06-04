@@ -22,11 +22,10 @@ void drawCells(SDL_Renderer *renderer, BOARD *b, GAME *g)
 			cell.y = y*g->cellWidth;
 			cell.w = x*g->cellWidth+g->cellWidth;
 			cell.h = y*g->cellWidth+g->cellWidth;
-			if (b->board[x*(g->numXCells)+y] == 0) {
+			if (b->board[x][y] == 0) {
 				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			} else {
-				SDL_SetRenderDrawColor(renderer, rand() % 25 + 100,
-						rand() % 25 + 100, 255,   255);
+				SDL_SetRenderDrawColor(renderer, 100, 125, 255,   255);
 			}
 			SDL_RenderFillRect(renderer, &cell);
 		}
@@ -46,7 +45,7 @@ void drawFrame(SDL_Renderer *renderer, BOARD *b, GAME *g)
 
 void update(BOARD *b, GAME *g)
 {
-	randomizeBoard(b, chance);
+	updateBoard(b);
 }
 
 int main(int argc, char *argv[])
@@ -113,6 +112,8 @@ int main(int argc, char *argv[])
 						pauseFlag = !pauseFlag;
 					} else if (e.key.keysym.sym == 44) {
 						update(b, g);
+					} else if (e.key.keysym.sym == 114) {
+						randomizeBoard(b, chance);
 					}
 					break;
 				default: {}
@@ -129,8 +130,8 @@ int main(int argc, char *argv[])
 		}
 		ucurr = SDL_GetTicks();
 
-		//printf("Draw Time : %5d\t", dcurr-dprev);
-		//printf("Update Time : %5d\r", ucurr-uprev);
+		printf("Draw Time : %5d\t", dcurr-dprev);
+		printf("Update Time : %5d\r", ucurr-uprev);
 		counter--;
 
 		if (counter <= 0) {
