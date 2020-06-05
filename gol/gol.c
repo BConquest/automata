@@ -7,7 +7,7 @@
 #include "./inc/game.h"
 
 int chance = 0;
-int pauseFlag = 0;
+int pauseFlag = 1;
 
 void drawCells(SDL_Renderer *renderer, BOARD *b, GAME *g)
 {
@@ -96,6 +96,8 @@ int main(int argc, char *argv[])
 	int counter = atoi(argv[4]);
 	unsigned int dcurr = 0, dprev = 0;
 	unsigned int ucurr = 0, uprev = 0;
+	
+	randomizeBoard(b, chance);
 
 	while (quit == 0) {
 		dprev = dcurr;

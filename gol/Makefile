@@ -1,5 +1,5 @@
 cc = clang
-flags = -Wall -Wextra
+flags = -Wall -Wextra -O3
 links = -lSDL2
 include = src/board.c src/game.c
 

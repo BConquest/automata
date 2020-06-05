@@ -94,21 +94,21 @@ extern int checkNeighbors(int **cells, int x, int y, int w, int h)
 
 	if (x == 0) {
 		if (y == 0) {
-			if (cells[w-1][h-1] == 1) sum++;
+//			if (cells[w-1][h-1] == 1) sum++;
 		} else {
-			if (cells[w-1][y-1] == 1) sum++;
+//			if (cells[w-1][y-1] == 1) sum++;
 		}
 
-		if (cells[w-1][y] == 1) sum++;
+//		if (cells[w-1][y] == 1) sum++;
 
 		if (y == h-1) {
-			if (cells[w-1][0] == 1) sum++;
+//			if (cells[w-1][0] == 1) sum++;
 		} else {
-			if (cells[w-1][y+1] == 1) sum++;
+//			if (cells[w-1][y+1] == 1) sum++;
 		}
 	} else {
 		if (y == 0) {
-			if (cells[x-1][h-1] == 1) sum++;
+//			if (cells[x-1][h-1] == 1) sum++;
 		} else {
 			if (cells[x-1][y-1] == 1) sum++;
 		}
@@ -116,41 +116,41 @@ extern int checkNeighbors(int **cells, int x, int y, int w, int h)
 		if (cells[x-1][y] == 1) sum++;
 
 		if (y == h-1) {
-			if (cells[x-1][0] == 1) sum++;
+//			if (cells[x-1][0] == 1) sum++;
 		} else {
 			if (cells[x-1][y+1] == 1) sum++;
 		}
 	}
 
 	if (y == 0) {
-		if (cells[x][h-1]) sum++;
+//		if (cells[x][h-1]) sum++;
 	} else {
 		if (cells[x][y-1] == 1) sum++;
 	}
 
 	if (y == h-1) {
-		if (cells[x][0] == 1) sum++;
+//		if (cells[x][0] == 1) sum++;
 	} else {
 		if (cells[x][y+1] == 1) sum++;
 	}
 
 	if (x == w-1) {
 		if (y == 0) {
-			if (cells[0][h-1] == 1) sum++;
+//			if (cells[0][h-1] == 1) sum++;
 		} else {
-			if (cells[0][y-1] == 1) sum++;
+//			if (cells[0][y-1] == 1) sum++;
 		}
 
-		if (cells[0][y] == 1) sum++;
+//		if (cells[0][y] == 1) sum++;
 
 		if (y == h-1) {
-			if (cells[0][0] == 1) sum++;
+//			if (cells[0][0] == 1) sum++;
 		} else {
-			if (cells[0][y+1] == 1) sum++;
+//			if (cells[0][y+1] == 1) sum++;
 		}
 	} else {
 		if (y == 0) {
-			if (cells[x+1][h-1] == 1) sum++;
+//			if (cells[x+1][h-1] == 1) sum++;
 		} else {
 			if (cells[x+1][y-1] == 1) sum++;
 		}
@@ -158,7 +158,7 @@ extern int checkNeighbors(int **cells, int x, int y, int w, int h)
 		if (cells[x+1][y] == 1) sum++;
 
 		if (y == h-1) {
-			if (cells[x+1][0] == 1) sum++;
+//			if (cells[x+1][0] == 1) sum++;
 		} else {
 			if (cells[x+1][y+1] == 1) sum++;
 		}
@@ -190,11 +190,7 @@ extern void updateBoard(BOARD *b)
 					b->buffer[i][j] = 1;
 				}
 			}
-			printf("%d ", neighbors);
 		}
-		printf("\n");
 	}
-
-	printf("\n\n");
 	copyto(b, 1);
 }
