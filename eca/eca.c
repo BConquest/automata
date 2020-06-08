@@ -19,7 +19,7 @@ int *generateRule(int *array, int rule) {
 void printArray(int* array, int size) {
 	char *buffer = calloc(sizeof(char),(size+1)*2);
 	for (int i = 0; i < size; i++) {
-		buffer[i] = (array[i] == 1) ? ' ' : '#';
+		buffer[i] = (array[i] == 1) ? '#' : ' ';
 	}
 	printf("%s\n", buffer);
 	free(buffer);
@@ -90,7 +90,6 @@ int main(int argc, char *argv[])
 	
 	arr[size/2+1] = 1;
 
-	printArray(arr, size);
 	for (int i = 0; i < atoi(argv[2]); i++) {
 		printArray(arr, size);
 		arr = updateArray(arr, rule, size);
