@@ -18,14 +18,8 @@ int *generateRule(int *array, int rule) {
 
 void printArray(int* array, int size) {
 	char *buffer = calloc(sizeof(char),(size+1)*2);
-	char character = ' ';
 	for (int i = 0; i < size; i++) {
-		if (array[i] == 1) {
-			character = '#';
-		} else {
-			character = ' ';
-		}
-		buffer[i] = character;
+		buffer[i] = (array[i] == 1) ? ' ' : '#';
 	}
 	printf("%s\n", buffer);
 	free(buffer);
@@ -51,7 +45,7 @@ int checkNeighbor(int *array, int *rule, int size, int index) {
 }
 
 int *updateArray(int *array, int *rule, int size) {
-	int *temp = malloc(sizeof(int) * size);
+	int *temp = calloc(sizeof(int), size);
 
 	if (temp == NULL) {
 		perror("Error Allocating Space for Buffer Array\n");
