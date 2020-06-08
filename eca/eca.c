@@ -93,6 +93,7 @@ int main(int argc, char *argv[])
 	for (int i = 0; i < atoi(argv[2]); i++) {
 		printArray(arr, size);
 		arr = updateArray(arr, rule, size);
+		sleep(1);
 	}
 
 	free(rule);
