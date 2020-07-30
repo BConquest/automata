@@ -17,7 +17,7 @@ int *generateRule(int *array, int rule) {
 }
 
 void printArray(int* array, int size) {
-	char *buffer = calloc(sizeof(char),(size+1)*2);
+	char *buffer = malloc(sizeof(char)*(size+1));
 	for (int i = 0; i < size; i++) {
 		buffer[i] = (array[i] == 1) ? '#' : ' ';
 	}
@@ -62,8 +62,8 @@ int *updateArray(int *array, int *rule, int size) {
 
 int main(int argc, char *argv[])
 {
-	if (argc != 4) {
-		printf("Usage: ./a.out <size> <iterations> <rule: 0-255>\n");
+	if (argc != 5) {
+		printf("Usage: ./a.out <size> <iterations> <rule: 0-255> <sleep time>\n");
 		exit(EXIT_FAILURE);
 	}
 
@@ -79,6 +79,8 @@ int main(int argc, char *argv[])
 	int size = atoi(argv[1]);
 	int* arr = malloc(sizeof(int) * size);
 
+	int time = atoi(argv[4]);
+
 	if (arr == NULL) {
 		perror("Error Allocating Automata Array\n");
 		exit(EXIT_FAILURE);
@@ -93,7 +95,7 @@ int main(int argc, char *argv[])
 	for (int i = 0; i < atoi(argv[2]); i++) {
 		printArray(arr, size);
 		arr = updateArray(arr, rule, size);
-		sleep(1);
+		sleep(time);
 	}
 
 	free(rule);
